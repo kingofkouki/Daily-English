@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Daily English at Home</title>
+
+<!-- PWA & Meta Tags -->
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="theme-color" id="metaThemeColor" content="#1c1c1e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Memanggil File CSS -->
+<link rel="stylesheet" href="style.css">
+
+<!-- Confetti Library -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <button class="theme-toggle" id="themeBtn" type="button">
+      <span id="themeIcon">☀️</span><span id="themeLabel">Light</span>
+    </button>
+  </div>
+  
+  <header>
+    <h1>Daily English.</h1>
+    <p class="sub">30 Hari Bahasa Inggris Sehari-hari di Rumah</p>
+  </header>
+  
+  <main class="card">
+    <div class="progress-row">
+      <span id="progressText">0 dari 30 hari selesai</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <progress id="progress" max="30" value="0"></progress>
+    
+    <!-- Tombol Hari 1 - 30 -->
+    <div class="days" id="days"></div>
+    
+    <section aria-live="polite">
+      <div class="eyebrow" id="dayLabel">HARI 01</div>
+      <h2 id="dayTitle"></h2>
+      <p id="dayTheme" style="color: var(--muted); margin-bottom: 16px; font-size: 0.95rem;"></p>
+      
+      <!-- Daftar Kosakata & Checklist -->
+      <div class="extras-container">
+        <div class="extra-box">
+          <div class="extra-title">📝 Daftar Ungkapan & Checklist Harian</div>
+          <div id="vocabList" style="margin-top: 10px; display: flex; flex-direction: column; gap: 10px;"></div>
+        </div>
+
+        <div class="extra-box" style="margin-top: 12px;">
+          <div class="extra-title">💬 Contoh Percakapan & Terjemahan</div>
+          <div class="extra-content" id="sampleSentences" style="white-space: pre-line;"></div>
+        </div>
+      </div>
+    </section>
+    
+    <div class="actions" style="margin-top: 20px;">
+      <button class="btn primary" id="markBtn" style="width: 100%;">Tandai Hari Ini Selesai</button>
+      <button class="btn" id="copyBtn" style="margin-top: 8px; width: 100%;">Salin Materi Hari Ini</button>
+    </div>
+  </main>
+
+  <footer style="text-align: center; padding: 24px 0 40px 0; color: #8e8e93; font-size: 0.85rem;">
+    Created for Family & Daily Conversation
+  </footer>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

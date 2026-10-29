@@ -1,0 +1,108 @@
+:root {
+  --bg: #12171D;       /* Warna hitam kustom sesuai permintaan */
+  --card: #1E252E;     /* Warna kartu sedikit lebih terang dari background agar kontras */
+  --ink: #FFFFFF;      /* Warna teks utama putih */
+  --muted: #9BA3AF;    /* Warna teks sekunder / redup */
+  --accent: #FFC700;   /* Warna aksen kuning */
+  --accent-text: #000000;
+  --button: #27303D;   /* Warna tombol */
+  --line: #2D3748;     /* Warna garis pembatas */
+  --done-bg: #28CD41;
+}
+
+[data-theme="light"] {
+  --bg: #F5F2eb;      /* Latar belakang kertas cream untuk mode terang */
+  --card: #FFFDF9;    
+  --ink: #2C2C2E;     
+  --muted: #6E6E73;
+  --accent: #B45309;  
+  --accent-text: #FFFFFF;
+  --button: #EAE5D9;  
+  --line: #DCD6C8;    
+  --done-bg: #34C759;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.wrap { width: 100%; max-width: 480px; }
+.topbar { display: flex; justify-content: flex-end; margin-bottom: 12px; }
+.theme-toggle {
+  background: var(--button); color: var(--ink); border: none;
+  padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; font-weight: 600;
+}
+header { text-align: center; margin-bottom: 24px; }
+h1 { font-size: 1.8rem; font-weight: 800; color: var(--accent); }
+.sub { font-size: 0.9rem; color: var(--muted); margin-top: 4px; }
+.card {
+  background: var(--card); border-radius: 24px; padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25); border: 1px solid var(--line);
+}
+.progress-row { display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--muted); margin-bottom: 8px; }
+progress { width: 100%; height: 8px; border-radius: 4px; appearance: none; margin-bottom: 16px; }
+progress::-webkit-progress-bar { background: var(--button); border-radius: 4px; }
+progress::-webkit-progress-value { background: var(--accent); border-radius: 4px; }
+
+.days {
+  display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; margin-bottom: 16px;
+  scrollbar-width: none;
+}
+.days::-webkit-scrollbar { display: none; }
+.day {
+  min-width: 40px; height: 40px; border-radius: 50%; background: var(--button);
+  color: var(--ink); border: none; font-weight: 600; cursor: pointer; flex-shrink: 0;
+}
+.day.active { background: var(--accent); color: var(--accent-text); }
+.day.done { background: var(--done-bg); color: #fff; }
+
+.eyebrow { font-size: 0.75rem; font-weight: 700; color: var(--accent); letter-spacing: 1px; margin-bottom: 6px; }
+h2 { font-size: 1.25rem; margin-bottom: 8px; }
+.extra-box { background: var(--button); border-radius: 14px; padding: 14px; margin-top: 12px; }
+.extra-title { font-weight: 700; font-size: 0.9rem; margin-bottom: 8px; color: var(--accent); display: flex; justify-content: space-between; align-items: center; }
+.extra-content { font-size: 0.9rem; line-height: 1.6; }
+
+.extra-content span.en-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+.extra-content span.id-text {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.vocab-item {
+  display: flex; align-items: center; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--line);
+}
+.vocab-item:last-child { border-bottom: none; }
+.vocab-left { display: flex; align-items: flex-start; gap: 10px; }
+.vocab-item input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--accent); cursor: pointer; margin-top: 2px; }
+
+.speak-btn {
+  background: var(--card);
+  color: var(--accent);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: transform 0.1s ease;
+  flex-shrink: 0;
+}
+.speak-btn:active { transform: scale(0.9); }
+
+.btn {
+  background: var(--button); color: var(--ink); border: none; padding: 12px;
+  border-radius: 14px; font-weight: 700; cursor: pointer; font-size: 0.95rem; text-align: center; width: 100%;
+}
+.btn.primary { background: var(--accent); color: var(--accent-text); }
