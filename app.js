@@ -75,13 +75,43 @@ function speakText(text) {
   }
 }
 
+// --- TEMA ---
 function applyTheme(theme) {
   document.documentElement.dataset.theme = theme;
   const isDark = theme === "dark";
-  document.getElementById("themeIcon").textContent = isDark ? "☀️" : "🌙";
-  document.getElementById("themeLabel").textContent = isDark ? "Light" : "Dark";
-  document.getElementById("metaThemeColor").content = isDark ? "#12171D" : "#f5f2eb";
-  try { localStorage.setItem("homeEngTheme", theme); } catch(e) {}
+  
+  // Update ikon dan label tombol
+  const themeIcon = document.getElementById("themeIcon");
+  const themeLabel = document.getElementById("themeLabel");
+  if (themeIcon) themeIcon.textContent = isDark ? "☀️" : "🌙";
+  if (themeLabel) themeLabel.textContent = isDark ? "Light" : "Dark";
+  
+  // Update warna meta theme-color di header HTML (jika ada)
+  const metaThemeColor = document.getElementById("metaThemeColor");
+  if (metaThemeColor) {
+    metaThemeColor.content = isDark ? "#12171D" : "#f5f2eb";
+  }
+  
+  try { 
+    localStorage.setItem("homeEngTheme", theme); 
+  } catch(e) {}
+}
+
+// Cek tema yang tersimpan di localStorage atau default ke dark
+let currentTheme = "dark";
+try { 
+  currentTheme = localStorage.getItem("homeEngTheme") || "dark"; 
+} catch(e) {}
+
+applyTheme(currentTheme);
+
+// Event listener untuk tombol switch
+const themeBtn = document.getElementById("themeBtn");
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    currentTheme = currentTheme === "dark" ? "light" : "dark";
+    applyTheme(currentTheme);
+  });
 }
 
 function initDays() {
